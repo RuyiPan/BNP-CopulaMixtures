@@ -66,13 +66,13 @@ generator_d2 <- function(t, theta, type="C") {
 }
 
 #test these functions by numeric calculations
-type<-"J"
-theta <- 2
-generator_d1(0.5, theta, type)
-delta <- 10^(-5)
-(generator(0.5+delta, theta, type)-generator(0.5, theta, type))/delta
-generator_d2(0.5, theta, type)
-(generator_d1(0.5+delta, theta, type)-generator_d1(0.5, theta, type))/delta
+# type<-"J"
+# theta <- 2
+# generator_d1(0.5, theta, type)
+# delta <- 10^(-5)
+# (generator(0.5+delta, theta, type)-generator(0.5, theta, type))/delta
+# generator_d2(0.5, theta, type)
+# (generator_d1(0.5+delta, theta, type)-generator_d1(0.5, theta, type))/delta
 
 
 #Copula
