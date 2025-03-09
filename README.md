@@ -11,7 +11,7 @@ This repository contains R scripts and structured analyses for Bayesian Nonparam
 ### Datasets
 - **Real Data**: 
   - Wine dataset (`wine_red_rank.rds`)
-  - Occupational data (`occupDIFrank.csv`)
+  - Occupancy data (`occupDIFrank.csv`)
 - **Simulated Data**: Generated Gaussian Copula data (`mix.rds`, `single.rds`) by using `simulate_gaussian_copula.R`
 
 ### Code Folder (`Code/`)
