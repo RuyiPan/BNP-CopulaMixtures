@@ -181,16 +181,6 @@ for (k in 1:batch_num) {
     
     #Step 4
     #sample a
-    # a_prop <- rgamma(1, kappa_a, kappa_a/a) #propose a new a
-    # cluster_size <- as.vector(table(current_theta)) #get the size for each cluster
-    # if (a_prop == 0) {
-    #   acc_prob_a <- 0
-    # } else {
-    #   acc_prob_a <- min(1, exp(log_f_a(a_prop, b, cluster_size, pars_a0, pars_b0)+
-    #                              dgamma(a, kappa_a, kappa_a/a_prop,log=T)-
-    #                              log_f_a(a, b, cluster_size, pars_a0, pars_b0)-
-    #                              dgamma(a_prop, kappa_a, kappa_a/a, log=T)))
-    # }
     
     a_prop <- runif(1, max(0, a-kappa_a), min(1, a+kappa_a)) #propose a new a
     cluster_size <- as.vector(table(current_theta)) #get the size for each cluster
@@ -212,11 +202,7 @@ for (k in 1:batch_num) {
     #step 5
     #sample b
     b_prop <- rgamma(1, kappa_b, kappa_b/b)
-    # acc_prob_b <- min(1, f_b(a, b_prop, n, length(cluster_size), pars_b0)*
-    #                     dgamma(b, kappa_b, kappa_b/b_prop)/
-    #                     f_b(a, b, n, length(cluster_size), pars_b0)/
-    #                     dgamma(b_prop, kappa_b, kappa_b/b))
-    
+  
     acc_prob_b <- min(1, exp(log_f_b(a, b_prop, n, length(cluster_size), pars_b0)+
                                dgamma(b, kappa_b, kappa_b/b_prop, log=T)-
                                log_f_b(a, b, n, length(cluster_size), pars_b0)-
@@ -352,11 +338,12 @@ print("Approach 1: get estimated joint density")
 #Approach one, within candiate 
 #select the a cluster to start, which determine the number of cluster
 #and initial values for each theta
-batch_size_post <- 50
-batch_num_post <- 40
 kappa_theta <- res_mcmc$all_kappa_theta[batch_num]
 range <- seq(burn_in*batch_size,batch_num*batch_size,by=thin) 
 pos_theta <- res_mcmc$all_theta[range,]
+batch_size_post <- 50
+batch_num_post <- 40
+batch_burn_in <- 0
 
 
 
@@ -383,7 +370,7 @@ cc_old <- findcc_old(pos_theta)
 
 res_theta_post1 <- post_sampling(data, cc_old$cc, cc_old$pars_unique, 
                                  cc_old$num_pars, kappa_theta,
-                                 batch_num_post, batch_size_post,
+                                 batch_num_post, batch_size_post, batch_burn_in,
                                  pars_G0, type, rate_theta)
 
 est_pars_weight1 <- est_pars_weight(res_theta_post1, res_mcmc, range)
@@ -392,7 +379,7 @@ est_pars_weight1 <- est_pars_weight(res_theta_post1, res_mcmc, range)
 cc_old_5mod <- findcc_old(pos_theta_candidate)
 res_theta_post2 <- post_sampling(data, cc_old_5mod$cc, cc_old_5mod$pars_unique, 
                                  cc_old_5mod$num_pars, kappa_theta,
-                                 batch_num_post, batch_size_post,
+                                 batch_num_post, batch_size_post,batch_burn_in,
                                  pars_G0, type, rate_theta)
 
 est_pars_weight2 <- est_pars_weight(res_theta_post2, res_mcmc, range)
@@ -402,7 +389,7 @@ salso_cc <- findcc_salso(pos_theta)
 
 res_theta_post3 <- post_sampling(data, salso_cc$cc, salso_cc$pars_unique, 
                                  salso_cc$num_pars, kappa_theta,
-                                 batch_num_post, batch_size_post,
+                                 batch_num_post, batch_size_post,batch_burn_in,
                                  pars_G0, type, rate_theta)
 
 est_pars_weight3 <- est_pars_weight(res_theta_post3, res_mcmc, range)
@@ -412,7 +399,7 @@ salso_cc_5mod <- findcc_salso(pos_theta_candidate)
 
 res_theta_post4 <- post_sampling(data, salso_cc_5mod$cc, salso_cc_5mod$pars_unique, 
                                  salso_cc_5mod$num_pars, kappa_theta,
-                                 batch_num_post, batch_size_post,
+                                 batch_num_post, batch_size_post,batch_burn_in,
                                  pars_G0, type, rate_theta)
 
 est_pars_weight4 <- est_pars_weight(res_theta_post4, res_mcmc, range)

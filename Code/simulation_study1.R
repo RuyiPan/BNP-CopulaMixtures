@@ -10,7 +10,7 @@ job_name=args[1]
 job_num=as.numeric(args[2])
 path=args[3]
 sample_size=as.numeric(args[4]) #change to 250/100 for sample size 500/200
-
+sample_size=100
 
 #25 pairs
 settings <- expand.grid(c("A","F","C","J","G"), c("A","F","C","J","G"))
@@ -320,11 +320,13 @@ print("Finish: get estimated joint density")
 
 #select the a cluster to start, which determine the number of cluster
 #and initial values for each theta
-batch_size_post <- 50
-batch_num_post <- 40
+
 kappa_theta <- res_mcmc$all_kappa_theta[batch_num]
 range <- seq(burn_in*batch_size,batch_num*batch_size,by=thin) 
 pos_theta <- res_mcmc$all_theta[range,]
+batch_size_post <- 50
+batch_num_post <- 40
+batch_burn_in <- 0
 
 
 
@@ -351,7 +353,7 @@ cc_old <- findcc_old(pos_theta)
 
 res_theta_post1 <- post_sampling(data, cc_old$cc, cc_old$pars_unique, 
                                  cc_old$num_pars, kappa_theta,
-                                 batch_num_post, batch_size_post,
+                                 batch_num_post, batch_size_post, batch_burn_in,
                                  pars_G0, type, rate_theta)
 
 est_pars_weight1 <- est_pars_weight(res_theta_post1, res_mcmc, range)
@@ -360,7 +362,7 @@ est_pars_weight1 <- est_pars_weight(res_theta_post1, res_mcmc, range)
 cc_old_5mod <- findcc_old(pos_theta_candidate)
 res_theta_post2 <- post_sampling(data, cc_old_5mod$cc, cc_old_5mod$pars_unique, 
                                  cc_old_5mod$num_pars, kappa_theta,
-                                 batch_num_post, batch_size_post,
+                                 batch_num_post, batch_size_post,batch_burn_in,
                                  pars_G0, type, rate_theta)
 
 est_pars_weight2 <- est_pars_weight(res_theta_post2, res_mcmc, range)
@@ -370,7 +372,7 @@ salso_cc <- findcc_salso(pos_theta)
 
 res_theta_post3 <- post_sampling(data, salso_cc$cc, salso_cc$pars_unique, 
                                  salso_cc$num_pars, kappa_theta,
-                                 batch_num_post, batch_size_post,
+                                 batch_num_post, batch_size_post,batch_burn_in,
                                  pars_G0, type, rate_theta)
 
 est_pars_weight3 <- est_pars_weight(res_theta_post3, res_mcmc, range)
@@ -380,7 +382,7 @@ salso_cc_5mod <- findcc_salso(pos_theta_candidate)
 
 res_theta_post4 <- post_sampling(data, salso_cc_5mod$cc, salso_cc_5mod$pars_unique, 
                                  salso_cc_5mod$num_pars, kappa_theta,
-                                 batch_num_post, batch_size_post,
+                                 batch_num_post, batch_size_post,batch_burn_in,
                                  pars_G0, type, rate_theta)
 
 est_pars_weight4 <- est_pars_weight(res_theta_post4, res_mcmc, range)
