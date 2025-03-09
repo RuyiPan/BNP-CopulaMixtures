@@ -64,7 +64,7 @@ The typical analysis workflow includes:
 
 Run scripts via command line:
 ```bash
-Rscript Code/real_wine.R job_name job_num path
+Rscript Code/real_occup.R job_name job_num path
 ```
 
 ## Results
