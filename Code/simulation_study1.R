@@ -9,8 +9,8 @@ args=(commandArgs(TRUE))
 job_name=args[1] 
 job_num=as.numeric(args[2])
 path=args[3]
-sample_size=as.numeric(args[4]) #change to 250/100 for sample size 500/200
-sample_size=100
+sample_size=as.numeric(args[4]) 
+sample_size=100 #change to 250/100 for sample size 500/200
 
 #25 pairs
 settings <- expand.grid(c("A","F","C","J","G"), c("A","F","C","J","G"))
