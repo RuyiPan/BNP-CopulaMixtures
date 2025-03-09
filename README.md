@@ -23,7 +23,7 @@ This repository contains R scripts and structured analyses for Bayesian Nonparam
 
 #### Main Scripts for running MCMC
 - `simulation_study1.R`, `simulation_study2.R`, `simulation_study3.R`: Scripts conducting simulation studies evaluating various copula models.
-- `real_occup.R`: Copula modeling for occupational dataset.
+- `real_occup.R`: Copula modeling for occupancy dataset.
 - `real_wine.R`: Copula modeling for wine dataset.
 - `Gaussian_copula.R`: Functions specific to Gaussian copula inference using Metropolis-Hastings.
 
@@ -36,7 +36,7 @@ This repository contains R scripts and structured analyses for Bayesian Nonparam
 - **Gaussian_mix/**: Simulation study 2 using mixture Gaussian copula simulations.
 - **Clayton_Hdim/**: Simulation study 3 using 4-dimensional Clayton copula simulations.
 - **real_wine/**: Analysis and results related to the wine dataset.
-- **Real_occup/**: Analysis and results related to occupational data.
+- **Real_occup/**: Analysis and results related to occupancy data.
 - **Figures/**: Visualizations and graphical outputs.
 
 #### Analysis Scripts
@@ -44,7 +44,7 @@ This repository contains R scripts and structured analyses for Bayesian Nonparam
 - `simulation_study1_result_analysis.R`: Analysis for simulation study 1.
 - `simulation_study2_result_analysis.R`: Analysis for simulation study 2.
 - `simulation_study3_result_analysis.R`: Analysis for simulation study 3.
-- `real_occupancy_result_analysis.R`: Analysis of occupational data results.
+- `real_occupancy_result_analysis.R`: Analysis of occupancy data results.
 - `red_wine_result_analysis.R`: Analysis of wine data results.
 
 ## Workflow
