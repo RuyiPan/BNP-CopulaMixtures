@@ -9,7 +9,8 @@ job_name=args[1]
 job_num=as.numeric(args[2])
 path=args[3]
 #change file to "Gaussian_sim_data/single.rds" to run for simulated gaussian copula with single component
-Gaussian_data <- readRDS("/home/panruyi/scratch/BNP_Copula/Data/Gaussian_sim_data/mix.rds")
+# Gaussian_data <- readRDS("/home/panruyi/scratch/BNP_Copula/Data/Gaussian_sim_data/mix.rds")
+Gaussian_data <- readRDS("../Data/Gaussian_sim_data/mix.rds")
 data <- as.matrix(Gaussian_data)
 sample_size <- nrow(data)
 settings <- c("A", "F", "C", "J", "G")

@@ -9,7 +9,7 @@ job_name=args[1]
 job_num=as.numeric(args[2])
 path=args[3]
 sample_size=as.numeric(args[4]) #sample_size=500
-
+sample_size=500
 job_num=3 #change the setting, there are 3 settings in the paper
 dim=4
 stype="C"
@@ -422,3 +422,4 @@ filename <- paste0("job_name=", job_name,"job_num=", job_num,
                    "sample_size=", sample_size, 
                    "real_type=",stype,"res_type=",type, ".rds")
 saveRDS(res, paste0(path,"/",filename))
+

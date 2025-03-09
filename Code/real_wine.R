@@ -9,7 +9,8 @@ args=(commandArgs(TRUE))
 job_name=args[1]
 job_num=as.numeric(args[2])
 path=args[3]
-wine <- readRDS("/home/panruyi/scratch/BNP_Copula/Data/Wine/wine_red_rank.rds")
+# wine <- readRDS("/home/panruyi/scratch/BNP_Copula/Data/Wine/wine_red_rank.rds")
+wine <- readRDS("../Data/Wine/wine_red_rank.rds")
 wine_new <- wine[!apply(wine[, c(1,2,3)], 1, function(x) any(x == 1)), ]
 
 
