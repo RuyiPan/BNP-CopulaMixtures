@@ -30,8 +30,8 @@ This repository contains R scripts and structured analyses for Bayesian Nonparam
 ### Result and Corresponding Analysis Scripts
 
 #### Result
-- **Simulation500/**: Simulation study 1 with sample size 500.
 - **Simulation200/**: Simulation study 1 with sample size 200.
+- **Simulation500/**: Simulation study 1 with sample size 500.
 - **Gaussian_single/**: Simulation study 2 using single-component Gaussian copula simulations.
 - **Gaussian_mix/**: Simulation study 2 using mixture Gaussian copula simulations.
 - **Clayton_Hdim/**: Simulation study 3 using 4-dimensional Clayton copula simulations.
